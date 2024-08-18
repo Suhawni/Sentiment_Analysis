@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Review Sentiments</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url('static/back.png');
+            background-size: cover;
+            font-family: sans-serif;
+            background-attachment: fixed;
+            margin-top: 40px;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card {
+            margin: 0 auto;
+            float: none;
+            margin-bottom: 10px;
+            border-radius: 2.25rem;
+            transition: 0.5s ease;
+            cursor: pointer;
+            max-width: 1000px;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+            box-shadow: rgba(0, 0, 0, 0.6);
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            color: black;
+            font-size: 44px;
+        }
+
+        .top-comments {
+            text-align: center;
+            width: 77%;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            font-size: 29px;
+            border-radius: 1.25rem;
+            padding: 10px;
+        }
+
+        .review-summary {
+            text-align: center;
+            width: 57%;
+            margin: 0 auto;
+            border-radius: 2.25rem;
+            margin-top: 30px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .review-summary.positive {
+            background-color: palegreen;
+        }
+
+        .review-summary.neutral {
+            background-color: grey;
+        }
+
+        .review-summary.negative {
+            background-color: indianred;
+        }
+
+        .card-body {
+            font-size: 20px;
+        }
+
+        .card-body.positive {
+            background-color: palegreen;
+        }
+
+        .card-body.neutral {
+            background-color: grey;
+        }
+
+        .card-body.negative {
+            background-color: indianred;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            position: relative;
+        }
+
+        footer p {
+            text-align: center;
+            padding: 1rem 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h1>Youtube Video Comments Sentiment Analyzer</h1>
+    </div>
+
+    <div class="top-comments">
+        <h2><b>Following are the top {{ n }} comments on the Video...</b></h2>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-4 review-summary positive'>
+            POSITIVE REVIEWS -->{{np}}/{{n}}
+        </div>
+
+        <div class='col-md-4 review-summary neutral'>
+            NEUTRAL REVIEWS --> {{nne}}/{{n}}
+        </div>
+
+        <div class='col-md-4 review-summary negative'>
+            NEGATIVE REVIEWS --> {{nn}}/{{n}}
+        </div>
+    </div>
+
+    {% for obj in dic %}
+    <div class="card my-5">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                {% if obj['sent'] =='POSITIVE' %}
+                <div class="card-body positive">
+                    <p class="card-text">{{ obj['org_comment'] }} </p>
+                </div>
+                {% endif %}
+
+                {% if obj['sent'] =='NEUTRAL' %}
+                <div class="card-body neutral">
+                    <p class="card-text">{{ obj['org_comment'] }} </p>
+                </div>
+                {% endif %}
+
+                {% if obj['sent'] =='NEGATIVE' %}
+                <div class="card-body negative">
+                    <p class="card-text">{{ obj['org_comment'] }} </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <footer>
+        <p>Made by Suhawni Arora</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

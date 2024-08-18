@@ -1,0 +1,63 @@
+:root {
+    --primary-color: #404550;
+    --secondary-color: #fff; 
+    --text-color: rgb(76, 67, 65); 
+    --button-color: #404040; 
+    --button-hover-color: #ffffff; 
+    --button-shadow-color: rgba(0,0,0,0.57);
+}
+
+html {
+    background: var(--primary-color);
+}
+
+body {
+    font: 100% Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    position: relative;
+    background: #fff;
+	color: rgb(76, 67, 65);
+    font-weight: normal;
+    font-style: normal;
+    width: 1280px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+form, div {
+    border-bottom: 2px solid var(--text-color);
+    margin-bottom: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+}
+h1 {
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--text-color);
+    margin-bottom: 1.5em;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.example_a {
+    border: none;
+    background: var(--button-color);
+    color: var(--secondary-color) !important;
+    font-weight: 100;
+    padding: 20px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    float: right;
+    margin-top: 2em;
+}
+
+.example_a:hover {
+    color: var(--button-color) !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    box-shadow: 0px 5px 40px -10px var(--button-shadow-color);
+    transition: all 0.3s ease 0s;
+}
